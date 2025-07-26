@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Codex Hub</title>
+    <style>
+  * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+            body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: linear-gradient(135deg, #4C2A85 0%, #6A4C93 50%, #8B5FBF 100%);
+            overflow-x: hidden;
+        }
+
+          .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /***************Header*******************/
+         header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+         nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+          .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+         .logo-img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+        }
+
+          .logo:hover .logo-img {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+         .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+          .nav-links a::after {
+            content: '';
+            position:absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #8B5FBF, #6A4C93);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        /**************hero section ***************/
+          
+           .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+         .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: gridMove 20s linear infinite;
+        }
+            @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(15px, 15px); }
+        }
+
+         .code-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+      .particle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.2);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            animation: particleFloat 15s linear infinite;
+        }
+ .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 8s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 9s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 7s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1s; }
+        .particle:nth-child(10) { left: 15%; animation-delay: 3s; }
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+
+
+            .hero-content {
+            z-index: 2;
+            text-align: center;
+            animation: heroFadeIn 2s ease;
+        }
+           @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            } 
+        }
+
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #8B5FBF, #6A4C93, #4C2A85);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 3s ease-in-out infinite, typewriter 4s steps(15) 1s both;
+            background-size: 400% 400%;
+            position: relative;
+        }
+@keyframes titleGlow {
+            0%, 100% { 
+                background-position: 0% 50%;
+                filter: brightness(1);
+            }
+            50% { 
+                background-position: 100% 50%;
+                filter: brightness(1.2) drop-shadow(0 0 20px rgba(139, 95, 191, 0.3));
+            }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+       
+
+         .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideUp 1s ease 2s forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+       
+
+          .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #8B5FBF, #6A4C93);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: buttonPop 0.8s ease 3s forwards;
+        }
+        @keyframes buttonPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
+            70% {
+                transform: scale(1.1) translateY(-5px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(139, 95, 191, 0.4);
+        }
+
+
+         /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+         .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 10s ease infinite;
+        }
+
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+         .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+          .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+.feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(139, 95, 191, 0.1), rgba(106, 76, 147, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+        }
+          .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+
+        /******************Courses Section*******************/
+
+         .courses {
+            padding: 100px 0;
+        }
+
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+           .course-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+         .course-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+ .course-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(139, 95, 191, 0.8), rgba(106, 76, 147, 0.8));
+        }
+ .course-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+ .course-content {
+            padding: 2rem;
+        }
+  .course-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+ .course-features li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .course-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #8B5FBF;
+            font-weight: bold;
+        }
+
+/***************************footer****************************/
+ footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+         .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #8B5FBF;
+        }
+.social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+
+         .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #8B5FBF, #6A4C93);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+         .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+
+        /*************************WhatsAPP**********************/
+            .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 5s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+          @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.1);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+/**********************slider****************/
+    .slider-section {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+         .slider-container {
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+            position: relative;
+        }
+
+ .slider-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+            animation: rotate360 20s linear infinite;
+        }
+          @keyframes rotate360 {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+           .slider-item {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+        }
+ .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+          .slider-item:hover img {
+            transform: scale(1.1);
+        }
+
+          .slider-item:nth-child(1) {
+            transform: rotateY(0deg) translateZ(350px);
+        }
+         .slider-item:nth-child(2) {
+            transform: rotateY(72deg) translateZ(350px);
+        }
+         .slider-item:nth-child(3) {
+            transform: rotateY(144deg) translateZ(350px);
+        }
+  .slider-item:nth-child(4) {
+            transform: rotateY(216deg) translateZ(350px);
+        }
+ .slider-item:nth-child(5) {
+            transform: rotateY(288deg) translateZ(350px);
+        }
+  .slider-info {
+            text-align: center;
+            margin-top: 2rem;
+        }
+         .slider-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #8B5FBF;
+        }
+          .slider-info p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    .slider-wrapper:hover {
+            animation-play-state: paused;
+        }
+        /****************************videoes style*****************************************/
+
+         .video-slider-section {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-slider-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 600px;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .video-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .video-slide.prev {
+            transform: translateX(-100%);
+        }
+
+        .video-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+        }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 40px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        .video-slide.active .video-overlay {
+            transform: translateY(0);
+        }
+
+        .video-overlay h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #8B5FBF;
+        }
+
+        .video-overlay p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Navigation Buttons */
+        .video-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(139, 95, 191, 0.8);
+            border: none;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-nav-btn:hover {
+            background: rgba(139, 95, 191, 1);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 10px 25px rgba(139, 95, 191, 0.4);
+        }
+
+        .video-prev {
+            left: 20px;
+        }
+
+        .video-next {
+            right: 20px;
+        }
+
+        /* Dots Indicator */
+        .video-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .video-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .video-dot.active {
+            background: #8B5FBF;
+            border-color: white;
+            transform: scale(1.2);
+        }
+
+        .video-dot:hover {
+            background: rgba(139, 95, 191, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Play/Pause Button */
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(139, 95, 191, 0.9);
+            border: none;
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            font-size: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+        }
+
+        .video-slide:hover .video-play-btn {
+            opacity: 1;
+        }
+
+        .video-play-btn:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 10px 30px rgba(139, 95, 191, 0.5);
+        }
+
+        /* Progress Bar */
+        .video-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 10;
+        }
+
+        .video-progress-bar {
+            height: 100%;
+            background: linear-gradient(45deg, #8B5FBF, #6A4C93);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+/*****************media******************/
+           @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    </head>
+    <body>
+ <header>
+        <nav>
+            <div class="logo">
+                <img src="codex.jpg" alt="Codex Hub Logo" class="logo-img">
+                <span>CODEX HUB</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+   <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="code-particles">
+            <div class="particle">progress learn() { 👨‍💻 </div>
+            <div class="particle">string skills = "coding';  👩‍💻</div>
+            <div class="particle">if (motivated) {</div>
+            <div class="particle">return success;</div>
+            <div class="particle">}  🧑‍💻</div>
+            <div class="particle">string future = bright;</div>
+            <div class="particle">while (learning) 👩‍💻 {</div>
+            <div class="particle">progress++;</div>
+            <div class="particle">cout<<"growing"; 🖳</div>
+            <div class="particle">}}  👨‍💻</div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Master Your Code</h1>
+                <p>Transform your programming skills with expert-led courses</p>
+                <a href="#courses" class="cta-button">Start Learning Today</a>
+            </div>
+        </div>
+    </section>
+
+      <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Codex Hub?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🚀</span>
+                    <h3>Fast-Track Learning</h3>
+                    <p>Accelerate your coding journey with our intensive, hands-on approach designed for rapid skill acquisition.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">👨‍💻</span>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals with years of real-world experience in top tech companies.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Project-Based</h3>
+                    <p>Build real applications and create an impressive portfolio that showcases your skills to employers.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🤝</span>
+                    <h3>Community Support</h3>
+                    <p>Join a vibrant community of learners and get help whenever you need it from peers and mentors.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📱</span>
+                    <h3>Mobile Friendly</h3>
+                    <p>Learn anywhere, anytime with our Meetings that works perfectly on all devices.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏆</span>
+                    <h3>Career Support</h3>
+                    <p>Get job placement assistance, resume reviews, and interview preparation to land your dream role.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section id="videos" class="video-slider-section">
+        <div class="container">
+            <h2 class="section-title">Course Preview Videos</h2>
+            <div class="video-slider-container">
+                
+                <!-- Video Slide 1 -->
+                <div class="video-slide active">
+                    <video  loop>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <h3>Flutter Development Fundamentals</h3>
+                        <p>Learn the basics of Flutter app development with hands-on projects. Build beautiful, cross-platform mobile applications using Dart and Flutter framework.</p>
+                    </div>
+                    <button class="video-play-btn" onclick="toggleVideo(0)">▶</button>
+                </div>
+
+                <!-- Video Slide 2 -->
+                <div class="video-slide">
+                    <video  loop>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <h3>Computer Science Fundamentals</h3>
+                        <p>Master the core concepts of computer science including data structures, algorithms, and programming logic using C++.</p>
+                    </div>
+                    <button class="video-play-btn" onclick="toggleVideo(1)">▶</button>
+                </div>
+
+                <!-- Video Slide 3 -->
+                <div class="video-slide">
+                    <video  loop>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <h3>Advanced Web Development</h3>
+                        <p>Dive deep into modern web technologies including React, Node.js, and database integration for full-stack development.</p>
+                    </div>
+                    <button class="video-play-btn" onclick="toggleVideo(2)">▶</button>
+                </div>
+
+                <!-- Video Slide 4 -->
+                <div class="video-slide">
+                    <video  loop>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <h3>Machine Learning & AI</h3>
+                        <p>Explore the exciting world of artificial intelligence and machine learning with Python, TensorFlow, and real-world projects.</p>
+                    </div>
+                    <button class="video-play-btn" onclick="toggleVideo(3)">▶</button>
+                </div>
+
+                <!-- Video Slide 5 -->
+                <div class="video-slide">
+                    <video  loop>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <h3>Game Development</h3>
+                        <p>Create engaging games using Unity and C#. Learn game design principles, physics, and interactive storytelling.</p>
+                    </div>
+                    <button class="video-play-btn" onclick="toggleVideo(4)">▶</button>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button class="video-nav-btn video-prev" onclick="changeSlide(-1)">‹</button>
+                <button class="video-nav-btn video-next" onclick="changeSlide(1)">›</button>
+
+                <!-- Dots Indicator -->
+                <div class="video-dots">
+                    <span class="video-dot active" onclick="currentSlide(1)"></span>
+                    <span class="video-dot" onclick="currentSlide(2)"></span>
+                    <span class="video-dot" onclick="currentSlide(3)"></span>
+                    <span class="video-dot" onclick="currentSlide(4)"></span>
+                    <span class="video-dot" onclick="currentSlide(5)"></span>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="video-progress">
+                    <div class="video-progress-bar" id="progressBar"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+ <section class="slider-section">
+        <div class="container">
+            <h2 class="section-title">Our Learning Environment</h2>
+            <div class="slider-container">
+                <div class="slider-particles">
+                    <div class="slider-particle"></div>
+                    <div class="slider-particle"></div>
+                    <div class="slider-particle"></div>
+                    <div class="slider-particle"></div>
+                </div>
+                <div class="slider-wrapper" id="slider">
+                    <div class="slider-item">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=300&h=300&fit=crop&crop=center" alt="Students Learning">
+                    </div>
+                    <div class="slider-item">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=300&fit=crop&crop=center" alt="Modern Classroom">
+                    </div>
+                    <div class="slider-item">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300&h=300&fit=crop&crop=center" alt="Coding Session">
+                    </div>
+                    <div class="slider-item">
+                        <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=300&h=300&fit=crop&crop=center" alt="Tech Workshop">
+                    </div>
+                    <div class="slider-item">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=300&h=300&fit=crop&crop=center" alt="Innovation Lab">
+                    </div>
+                </div>
+            </div>
+            <div class="slider-info">
+                <h3>Immersive Learning Experience</h3>
+                <p>Step into our state-of-the-art learning environment where innovation meets education. Our modern classrooms and collaborative spaces are designed to inspire creativity and foster deep learning in programming and technology.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+ <section id="courses" class="courses">
+        <div class="container">
+            <h2 class="section-title">Featured Courses</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Flutter</h3>
+                        <div class="course-price">$ 4000</div>
+                    </div>
+                    <div class="course-content">
+                        <ul class="course-features">
+                            <li>Flutter & Dart fundamentals</li>
+                            <li>Database integration</li>
+                            <li>RESTful API development</li>
+                            <li>Deployment strategies for Android & iOS</li>
+                            <li>3 major projects</li>
+                            <li>Lifetime access to course content</li>
+                        </ul>
+                        <a href="#" class="cta-button">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Fundamental of CS</h3>
+                        <div class="course-price">$ 4000</div>
+                    </div>
+                    <div class="course-content">
+                        <ul class="course-features">
+                            <li>C++ fundamentals to advanced</li>
+                            <li>Data structures & algorithms</li>
+                            <li>Programming logic & problem solving</li>
+                            <li>Introduction to databases</li>
+                            <li>HTML and CSS</li>
+                            <li>Git and Github</li>
+                            <li>Career guidance</li>
+                        </ul>
+                        <a href="#" class="cta-button">Enroll Now</a>
+                    </div>
+                </div>
+   
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+        <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@codexhub.com</p>
+                    <p>WhatsApp: +20 10 686 555 15</p>
+                    <p>Address: Dooki </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#videos" style="color: #fff; text-decoration: none;">About Us</a></p>
+                    <p><a href="#contact" style="color: #fff; text-decoration: none;">Privacy Policy</a></p>
+                    <p><a href="#contact" style="color: #fff; text-decoration: none;">Terms of Service</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com" target="_blank"><img src="https://www.svgrepo.com/show/382721/facebook.svg" alt="Facebook" width="50px" height="50px"   border-radius ="50%"></a>
+                        <a href="https://www.youtube.com" target="_blank"><img src="https://www.svgrepo.com/show/501076/youtube.svg" alt="YouTube" width="50px" height="50px"  ></a>
+                        <a href="https://www.tiktok.com" target="_blank"><img src="https://www.svgrepo.com/show/452114/tiktok.svg" alt ="TikTok " width="50px" height="50px"></a>
+                <a href="https://www.linkedin.com" target="_blank"><img src="https://www.svgrepo.com/show/303207/linkedin-icon-logo.svg" alt="LinkedIn" width="50px" height="50px" border-radius ="50%"></a>
+                    </div>
+                </div>
+            </div>
+            <p>&copy; 2025 Codex Hub. All rights reserved.</p>
+        </div>
+ </footer>
+ <a href="https://wa.me/201067963230?text=Hi! I'm interested in learning more about Codex Hub courses." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        💬
+    </a>
+    <script>
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+
+         // Add floating animation to hero background
+        const heroBackground = document.querySelector('.hero-bg');
+        let floatDirection = 1;
+        setInterval(() => {
+            heroBackground.style.transform = `translateY(${floatDirection * 5}px)`;
+            floatDirection *= -1;
+        }, 3000);
+
+
+          // Interactive button effects
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-3px) scale(1.5)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Dynamic gradient animation for hero title
+        const heroTitle = document.querySelector('.hero h1');
+        let gradientStep = 0;
+        setInterval(() => {
+            gradientStep += 1;
+            const hue1 = (gradientStep * 2) % 360;
+            const hue2 = (gradientStep * 2 + 60) % 360;
+            const hue3 = (gradientStep * 2 + 120) % 360;
+            heroTitle.style.background = `linear-gradient(45deg, hsl(${hue1}, 70%, 60%), hsl(${hue2}, 70%, 60%), hsl(${hue3}, 70%, 60%))`;
+            heroTitle.style.webkitBackgroundClip = 'text';
+            heroTitle.style.backgroundClip = 'text';
+        }, 100);
+
+
+
+        /**************vidoes scipt************/
+         let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.video-slide');
+    const dots = document.querySelectorAll('.video-dot');
+    const progressBar = document.getElementById('progressBar');
+    let slideInterval;
+
+    function showSlide(index) {
+        if (index >= slides.length) currentSlideIndex = 0;
+        if (index < 0) currentSlideIndex = slides.length - 1;
+
+        slides.forEach((slide, idx) => {
+            slide.classList.remove('active', 'prev');
+            if (idx === currentSlideIndex) {
+                slide.classList.add('active');
+            } else if (idx === currentSlideIndex - 1 || (currentSlideIndex === 0 && idx === slides.length - 1)) {
+                slide.classList.add('prev');
+            }
+        });
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentSlideIndex].classList.add('active');
+
+        resetProgressBar();
+    }
+
+    function changeSlide(direction) {
+        currentSlideIndex += direction;
+        showSlide(currentSlideIndex);
+    }
+
+    function currentSlide(index) {
+        currentSlideIndex = index - 1;
+        showSlide(currentSlideIndex);
+    }
+
+    function toggleVideo(index) {
+        const video = slides[index].querySelector('video');
+        const btn = slides[index].querySelector('.video-play-btn');
+        if (video.paused) {
+            video.play();
+            btn.textContent = '❚❚';
+        } else {
+            video.pause();
+            btn.textContent = '▶';
+        }
+    }
+
+    function resetProgressBar() {
+        clearInterval(slideInterval);
+        progressBar.style.width = '0%';
+        let width = 0;
+
+        slideInterval = setInterval(() => {
+            if (width >= 100) {
+                changeSlide(1);
+            } else {
+                width += 0.1;
+                progressBar.style.width = width + '%';
+            }
+        }, 50);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        showSlide(currentSlideIndex);
+    });
+    </script>
+    </body>
+</html>
