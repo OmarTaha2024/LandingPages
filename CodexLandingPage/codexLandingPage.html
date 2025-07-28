@@ -757,23 +757,59 @@
             transition: width 0.1s linear;
         }
 /*****************media******************/
-           @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .slider-wrapper,
+    .slider-item {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    .video-slider-container {
+        height: auto;
+    }
+
+    .video-slide video {
+        height: auto;
+        max-height: 300px;
+    }
+
+    .video-play-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .feature-card, .course-card {
+        padding: 1rem;
+    }
+
+    .course-features li,
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+}
+
     </style>
     </head>
     <body>
@@ -1209,6 +1245,7 @@ const observer = new IntersectionObserver((entries) => {
     document.addEventListener('DOMContentLoaded', () => {
         showSlide(currentSlideIndex);
     });
+    
     </script>
     </body>
 </html>
