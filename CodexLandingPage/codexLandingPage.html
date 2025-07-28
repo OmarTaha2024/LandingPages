@@ -1146,7 +1146,14 @@ const observer = new IntersectionObserver((entries) => {
     function showSlide(index) {
         if (index >= slides.length) currentSlideIndex = 0;
         if (index < 0) currentSlideIndex = slides.length - 1;
-
+    slides.forEach(slide => {
+        const video = slide.querySelector('video');
+        const btn = slide.querySelector('.video-play-btn');
+        if (!video.paused) {
+            video.pause();
+            btn.textContent = '▶';
+        }
+    });
         slides.forEach((slide, idx) => {
             slide.classList.remove('active', 'prev');
             if (idx === currentSlideIndex) {
